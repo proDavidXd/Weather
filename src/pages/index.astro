@@ -3,5 +3,62 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
-  <h1 class="title">Weather</h1>
+  <nav class="nav">
+    <header class="header">
+      <img src="/src/images/cloud.svg" alt="cloud" class="white-svg" />
+      <h1 class="title">Weather</h1>
+    </header>
+    <div id="locate">
+      <input
+        id="locateInput"
+        type="search"
+        placeholder="Search for a location..."
+      />
+      <img src="/src/images/search.svg" alt="search" class="white-svg" />
+    </div>
+  </nav>
 </Layout>
+
+<style>
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    min-height: 100px;
+    padding: 5px;
+    box-sizing: border-box;
+    background-color: #333;
+    color: #fff;
+  }
+
+  .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .white-svg {
+    filter: invert(100%);
+  }
+
+  #locate {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    background-color: #444;
+    border-radius: 15px;
+    height: 50%;
+    box-sizing: border-box;
+  }
+
+  #locateInput {
+    width: 200px;
+    padding: 15px;
+    border: none;
+    background-color: #444;
+    color: aliceblue;
+  }
+</style>
