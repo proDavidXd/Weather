@@ -46,4 +46,24 @@
   .gray {
     color: #747474;
   }
+
+  .loading {
+    display: flex;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border-color: #09f;
+    border-left-color: #f3efef;
+    animation: rotate 2s infinite ease;
+  }
+
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(365deg);
+    }
+  }
 </style>

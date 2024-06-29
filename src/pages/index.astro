@@ -1,8 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import getData from "../data.ts";
+import getData from "../data.js";
 
-var data = await getData("London");
+var locate = "London";
+var data = await getData(locate);
 ---
 
 <Layout>
@@ -21,27 +22,37 @@ var data = await getData("London");
     </div>
   </nav>
 
-  <h2 class="subtitle" id="place">
-    {data.location.name}, <small> {data.location.country} </small>
-  </h2>
   <main class="main">
-    <div class="cart">
-      <div class="weather">
-        <h2 class="subtitle" id="temp">{data.current.temp_c}c°</h2>
-        <p class="gray">{data.current.condition.text}</p>
-        <div class="gray" id="details">
-          <p>Feels like: {data.current.feelslike_c}c°</p>
-          <p>Humidity: {data.current.humidity}%</p>
-          <p>Wind: {data.current.wind_kph}km/h</p>
-        </div>
-      </div>
-      <img
-        src={data.current.condition.icon}
-        alt="time"
-        width="150"
-        height="150"
-      />
-    </div>
+    {
+      data ? (
+        <>
+          <h2 class="subtitle" id="place">
+            {data.location.name}, <small> {data.location.country} </small>
+          </h2>
+          <div class="cart">
+            <div class="weather">
+              <h2 class="subtitle" id="temp">
+                {data.current.temp_c}c°
+              </h2>
+              <p class="gray">{data.current.condition.text}</p>
+              <div class="gray" id="details">
+                <p>Feels like: {data.current.feelslike_c}c°</p>
+                <p>Humidity: {data.current.humidity}%</p>
+                <p>Wind: {data.current.wind_kph}km/h</p>
+              </div>
+            </div>
+            <img
+              src={data.current.condition.icon}
+              alt="time"
+              width="150"
+              height="150"
+            />
+          </div>
+        </>
+      ) : (
+        <div class="loader" />
+      )
+    }
   </main>
 </Layout>
 
@@ -97,7 +108,7 @@ var data = await getData("London");
     display: flex;
     align-items: center;
     justify-content: space-around;
-    width: 70%;
+    width: 90%;
     background-color: #ddd;
     border-radius: 15px;
     padding: 0;
